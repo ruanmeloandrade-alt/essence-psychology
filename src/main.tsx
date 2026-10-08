@@ -1,72 +1,18 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { Brain, CalendarCheck, CheckCircle2, Lock, MessageCircle, Sparkles, Target } from "lucide-react";
-import "./styles.css";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { CalendarDays, Check, HeartPulse, MessageCircle, Shield, Sparkles } from 'lucide-react';
+import './styles.css';
 
-const calendly = "https://calendly.com/rbmidia/reuniao-de-automacao-e-trafego-pago";
-const whatsapp = "https://wa.me/5522997330669?text=Quero%20agendar%20uma%20sess%C3%A3o";
+const CALENDLY_URL = 'https://calendly.com/rbmidia/reuniao-de-automacao-e-trafego-pago';
+const WHATSAPP_URL = 'https://wa.me/5522997330669?text=Quero%20agendar%20uma%20sess%C3%A3o';
 
-const services = [
-  [Brain, "Atendimento Psicologico Individual", "Sessoes individuais focadas nas suas necessidades especificas, em ambiente confidencial e acolhedor."],
-  [Sparkles, "Acompanhamento Emocional Continuo", "Processo terapeutico estruturado para promover evolucao constante na saude emocional e mental."],
-  [Target, "Terapia para Alta Performance", "Abordagem direcionada para profissionais que precisam manter clareza e equilibrio sob alta exigencia."],
-  [Lock, "Atendimento Personalizado e Confidencial", "Cada processo e unico, adaptado ao seu ritmo, demandas e momento de vida."],
-] as const;
+const painPoints = ['Profissionais que lidam com pressão constante e precisam manter a performance', 'Empresários sobrecarregados com decisões que impactam negócios e pessoas', 'Executivos que sentem o peso da responsabilidade sobre os resultados', 'Pessoas com ansiedade ligada à performance e ao desempenho profissional', 'Quem tem dificuldade de desligar a mente e encontrar equilíbrio'];
+const services = [{ title: 'Atendimento Psicológico Individual', description: 'Sessões individuais focadas nas suas necessidades específicas, em um ambiente de total confidencialidade e acolhimento.' }, { title: 'Acompanhamento Emocional Contínuo', description: 'Um processo terapêutico estruturado para promover evolução constante na sua saúde emocional e mental.' }, { title: 'Terapia para Alta Performance', description: 'Abordagem direcionada para profissionais que precisam manter clareza e equilíbrio em ambientes de alta exigência.' }, { title: 'Atendimento Personalizado e Confidencial', description: 'Cada processo é único. O atendimento é adaptado ao seu ritmo, às suas demandas e ao seu momento de vida.' }];
+const differentials = [{ title: 'Atendimento individual e estratégico', description: 'Cada sessão é conduzida com foco e direcionamento, respeitando a complexidade da sua realidade.' }, { title: 'Ambiente seguro e confidencial', description: 'Sigilo absoluto. Um espaço onde você pode ser vulnerável sem julgamento.' }, { title: 'Foco em clareza mental', description: 'Trabalho voltado para ajudar você a pensar com mais lucidez e agir com mais segurança.' }, { title: 'Abordagem personalizada', description: 'Sem protocolos genéricos. O processo é desenhado para a sua realidade e os seus objetivos.' }];
+const testimonials = [{ text: 'Hoje consigo tomar decisões com mais clareza e menos pressão. O trabalho com a Milena mudou minha forma de lidar com a responsabilidade.', author: 'C.M.', role: 'Empresário' }, { text: 'Encontrei um espaço onde posso falar sobre as pressões que ninguém ao meu redor entende. Isso fez toda a diferença na minha vida profissional e pessoal.', author: 'R.S.', role: 'Executiva' }, { text: 'A terapia me devolveu o controle emocional que eu precisava. Consigo liderar com mais equilíbrio e presença.', author: 'A.L.', role: 'CEO' }];
 
 function App() {
-  return (
-    <main>
-      <section className="hero">
-        <nav><strong>Essence Psychology</strong><a href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></nav>
-        <div className="heroContent">
-          <p className="eyebrow">Milena Melo Psicologa</p>
-          <h1>Clareza emocional para quem precisa tomar decisoes importantes</h1>
-          <p className="lead">Atendimento psicologico exclusivo para empresarios, executivos e profissionais que lidam com alta pressao.</p>
-          <div className="actions">
-            <a className="button primary" href={calendly} target="_blank" rel="noreferrer"><CalendarCheck size={20} /> Agendar sessao</a>
-            <a className="button secondary" href={whatsapp} target="_blank" rel="noreferrer"><MessageCircle size={20} /> Falar no WhatsApp</a>
-          </div>
-        </div>
-      </section>
-
-      <section className="section intro">
-        <p className="eyebrow">Psicologia para alta demanda</p>
-        <h2>Um espaco reservado para organizar pensamentos, regular emocoes e sustentar decisoes com mais presenca.</h2>
-      </section>
-
-      <section className="section services">
-        {services.map(([Icon, title, description], index) => (
-          <article key={title}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <Icon />
-            <h3>{title}</h3>
-            <p>{description}</p>
-          </article>
-        ))}
-      </section>
-
-      <section className="section split">
-        <div>
-          <p className="eyebrow">Para quem</p>
-          <h2>Empresarios, lideres e profissionais que carregam pressao constante.</h2>
-        </div>
-        <ul>
-          <li><CheckCircle2 /> Decisoes de alto impacto</li>
-          <li><CheckCircle2 /> Sobrecarga mental e emocional</li>
-          <li><CheckCircle2 /> Necessidade de sigilo e escuta qualificada</li>
-          <li><CheckCircle2 /> Busca por clareza e estabilidade interna</li>
-        </ul>
-      </section>
-
-      <section className="section cta">
-        <p className="eyebrow">Comece com uma conversa</p>
-        <h2>Agende uma sessao ou fale pelo WhatsApp.</h2>
-        <a className="button primary" href={calendly} target="_blank" rel="noreferrer">Agendar sessao</a>
-      </section>
-
-      <footer>© {new Date().getFullYear()} Milena Melo — Psicologa | CRP 05/85609</footer>
-    </main>
-  );
+  return <><main><section className="hero"><div className="heroMedia"><div className="mark">MM</div></div><div className="heroContent"><p className="eyebrow"><Sparkles size={16} />Essence Psychology</p><h1>Clareza emocional para quem precisa tomar decisões importantes</h1><p>Atendimento psicológico exclusivo para empresários, executivos e profissionais que lidam com alta pressão.</p><div className="actions"><a className="primary" href={CALENDLY_URL} target="_blank"><CalendarDays />Agendar sessão</a><a className="secondary" href={WHATSAPP_URL} target="_blank"><MessageCircle />Falar no WhatsApp</a></div></div></section><section id="sobre" className="section about"><div className="portrait"><div>Milena Melo</div><span>Psicóloga | CRP 05/85609</span></div><div><p className="eyebrow">Sobre</p><h2>Milena Melo — Psicóloga</h2><p>Com atuação voltada ao atendimento individual, Milena oferece um espaço de escuta qualificada e estratégica para profissionais que enfrentam os desafios emocionais de posições de alta responsabilidade.</p><p>Seu trabalho é focado em alta performance emocional, ajudando seus pacientes a lidar com ansiedade, pressão por resultados e o peso da liderança.</p><p>Cada sessão é pensada como um investimento em clareza mental, equilíbrio e capacidade de ação.</p></div></section><section className="section muted"><p className="eyebrow">Para quem é</p><h2>Você se reconhece em alguma dessas situações?</h2><div className="list">{painPoints.map((point) => <article key={point}><Check /><p>{point}</p></article>)}</div></section><section id="servicos" className="section"><p className="eyebrow">Serviços</p><h2>Atendimento exclusivo e personalizado</h2><div className="grid">{services.map((service, index) => <article key={service.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{service.title}</h3><p>{service.description}</p></article>)}</div></section><section className="section dark"><p className="eyebrow">Diferenciais</p><h2>Por que escolher a Milena Melo</h2><div className="grid">{differentials.map((item) => <article key={item.title}><Shield /><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></section><section className="section muted"><p className="eyebrow">Depoimentos</p><h2>O que dizem sobre o atendimento</h2><div className="testimonials">{testimonials.map((item) => <article key={item.author}><p>“{item.text}”</p><strong>{item.author}</strong><span>{item.role}</span></article>)}</div></section><section className="cta"><HeartPulse /><h2>Você não precisa lidar com isso sozinho.</h2><p>Dê o primeiro passo em direção à clareza emocional que você precisa.</p><div className="actions"><a className="primary" href={CALENDLY_URL} target="_blank"><CalendarDays />Agendar sessão</a><a className="secondary" href={WHATSAPP_URL} target="_blank"><MessageCircle />Falar no WhatsApp</a></div></section></main><a className="whatsapp" href={WHATSAPP_URL} target="_blank" aria-label="Falar no WhatsApp"><MessageCircle /></a><footer><strong>Milena Melo — Psicóloga</strong><span>CRP 05/85609</span></footer></>;
 }
 
-createRoot(document.getElementById("root")!).render(<React.StrictMode><App /></React.StrictMode>);
+createRoot(document.getElementById('root')!).render(<App />);
